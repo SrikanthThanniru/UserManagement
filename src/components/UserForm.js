@@ -7,20 +7,18 @@ const UserForm = ({ initialData = {}, onSubmit, onCancel }) => {
     department: '',
   });
 
+  // Synchronize formData with initialData when initialData changes
   useEffect(() => {
-    if (initialData.id && (
-      initialData.name !== formData.name ||
-      initialData.email !== formData.email ||
-      initialData.department !== formData.department
-    )) {
+    if (initialData.id) {
       setFormData({
         name: initialData.name || '',
         email: initialData.email || '',
         department: initialData.department || '',
       });
     }
-  }, [initialData]); // Dependency array only includes `initialData` now
+  }, [initialData.name, initialData.email, initialData.department, initialData.id]);
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -32,7 +30,10 @@ const UserForm = ({ initialData = {}, onSubmit, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ name: '', email: '', department: '' }); // Clear the form after submission
+    // Reset the form only if it's a new submission, not an update
+    if (!initialData.id) {
+      setFormData({ name: '', email: '', department: '' });
+    }
   };
 
   return (
@@ -68,10 +69,11 @@ const UserForm = ({ initialData = {}, onSubmit, onCancel }) => {
         />
       </div>
       <button type="submit">{initialData.id ? 'Update' : 'Add'}</button>
-      {onCancel && <button type="button" onClick={onCancel} className="cancel-btn">
-        Cancel
-      </button>
-      }
+      {onCancel && (
+        <button type="button" onClick={onCancel} className="cancel-btn">
+          Cancel
+        </button>
+      )}
     </form>
   );
 };
