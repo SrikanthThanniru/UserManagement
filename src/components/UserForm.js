@@ -7,9 +7,7 @@ const UserForm = ({ initialData = {}, onSubmit, onCancel }) => {
     department: '',
   });
 
-  // Properly initialize the form data when `initialData` changes
   useEffect(() => {
-    // Only update form data if the `initialData` has changed (i.e., not the same as the current formData)
     if (initialData.id && (
       initialData.name !== formData.name ||
       initialData.email !== formData.email ||

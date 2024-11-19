@@ -1,4 +1,3 @@
-/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +18,6 @@ body {
   text-align: center;
 }
 
-/* Header */
 h1 {
   text-align: center;
   color: #dea209;
@@ -30,14 +28,12 @@ h1 {
   display: block;
 }
 
-/* Container for All Content */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Form Styling */
 form {
   background: #fff;
   padding: 20px;
@@ -92,15 +88,13 @@ form .cancel-btn:hover {
   background-color: #f01120;
 }
 
-/* Table Container for Scrolling */
 .table-container {
   width: 100%;
-  overflow-x: auto; /* Enables horizontal scrolling */
-  -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
   margin-top: 20px;
 }
 
-/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -144,7 +138,6 @@ table td button:focus {
   outline: none;
 }
 
-/* Button Container for Edit/Delete */
 .button-container {
   display: flex;
   justify-content: center;
